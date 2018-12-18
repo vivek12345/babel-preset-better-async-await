@@ -15,9 +15,9 @@ or with `yarn`
 $ yarn add babel-preset-better-async-await --dev
 ```
 
-## Usage
+## ⭐ Usage
 
-### Via `.babelrc` (Recommended)
+### Via `.babelrc` (Recommended) without options
 
 **.babelrc**
 
@@ -35,33 +35,122 @@ $ yarn add babel-preset-better-async-await --dev
 }
 ```
 
+### Via `.babelrc` (Recommended) with options
+
+**.babelrc**
+
+```json
+{
+  "presets": [
+    [
+      "better-async-await",
+      {
+        "mode": "strict"
+      }
+    ]
+  ]
+}
+```
+
+> If you are using babel-preset-env or @babel/env or babel-plugin-transform-async-to-generator, then the order of presets matter
+
+```json
+{
+  "presets": [
+    [
+      "better-async-await",
+      {
+        "mode": "strict"
+      }
+    ],
+    ["@babel/env"]
+  ]
+}
+```
+
 ### Via CLI
 
 ```sh
-$ babel script.js --presets better-async-await
+babel --presets better-async-await script.js
 ```
 
 > If you are using babel-preset-env or @babel/env or babel-plugin-transform-async-to-generator, then the order of presets matter
 
 ```sh
-$ babel script.js --presets better-async-await @babel/env
+babel --presets better-async-await @babel/env script.js
 ```
 
 ### Via Node API
 
-```javascript
+without options:
+
+```js
 require("babel-core").transform("code", {
   presets: ["better-async-await"]
 });
 ```
 
+with option:
+
+```js
+require("babel-core").transform("code", {
+  presets: [
+    [
+      "better-async-await",
+      {
+        mode: "strict"
+      }
+    ]
+  ]
+});
+```
+
 > If you are using babel-preset-env or @babel/env or babel-plugin-transform-async-to-generator, then the order of presets matter
 
-```javascript
+without options:
+
+```js
 require("babel-core").transform("code", {
   presets: ["better-async-await", "@babel/env"]
 });
 ```
+
+with option:
+
+```js
+require("babel-core").transform("code", {
+  presets: [
+    [
+      "better-async-await",
+      {
+        mode: "strict"
+      }
+    ],
+    ["@babel/env"]
+  ]
+});
+```
+
+## Options
+
+### `mode`
+
+- `strict`:
+  In this mode variable names on the left of await statement should match the following rule:-
+
+```js
+const [err, resp] = await api.getData(5);
+// ...
+```
+
+_In Strict Mode_
+
+- Variable name on the left for error should be `err`
+- Variable name on the left for response should be `resp`
+
+_In non-strict mode_
+
+- Variable names on the left can be `anything`
 
 ## Motivation and Idea
 

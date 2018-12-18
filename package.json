@@ -1,0 +1,11 @@
+{
+  "name": "babel-preset-better-async-await",
+  "version": "1.0.0",
+  "description": "preset for babel-plugin-better-async-await",
+  "main": "index.js",
+  "author": "Vivek Nayyar",
+  "license": "MIT",
+  "dependencies": {
+    "babel-plugin-better-async-await": "^1.0.0"
+  }
+}

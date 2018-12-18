@@ -1,7 +1,7 @@
 # babel-preset-better-async-await
 
 > Babel preset for the babel-plugin-better-async-await plugin.
-> [babel-preset-better-async-await](https://github.com/vivek12345/babel-plugin-better-async-await).
+> [babel-plugin-better-async-await](https://github.com/vivek12345/babel-plugin-better-async-await).
 
 ## Install
 

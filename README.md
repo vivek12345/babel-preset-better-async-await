@@ -27,10 +27,24 @@ $ yarn add babel-preset-better-async-await --dev
 }
 ```
 
+> If you are using babel-preset-env or @babel/env or babel-plugin-transform-async-to-generator, then the order of presets matter
+
+```json
+{
+  "presets": ["better-async-await", "@babel/env"]
+}
+```
+
 ### Via CLI
 
 ```sh
 $ babel script.js --presets better-async-await
+```
+
+> If you are using babel-preset-env or @babel/env or babel-plugin-transform-async-to-generator, then the order of presets matter
+
+```sh
+$ babel script.js --presets better-async-await @babel/env
 ```
 
 ### Via Node API
@@ -38,6 +52,14 @@ $ babel script.js --presets better-async-await
 ```javascript
 require("babel-core").transform("code", {
   presets: ["better-async-await"]
+});
+```
+
+> If you are using babel-preset-env or @babel/env or babel-plugin-transform-async-to-generator, then the order of presets matter
+
+```javascript
+require("babel-core").transform("code", {
+  presets: ["better-async-await", "@babel/env"]
 });
 ```
 

@@ -40,3 +40,146 @@ require("babel-core").transform("code", {
   presets: ["better-async-await"]
 });
 ```
+
+## 📒 Examples
+
+**In**
+
+```javascript
+async function test() {
+  const [err, resp] = await api.getData(5);
+}
+```
+
+**Out**
+
+```javascript
+async function test() {
+  const [err, resp] = await api
+    .getData(5)
+    .then(resp => {
+      return [null, resp];
+    })
+    .catch(error => {
+      return [error];
+    });
+}
+```
+
+======================================
+
+**In**
+
+```javascript
+async function test() {
+  const [err, resp] = await getData(5);
+}
+```
+
+**Out**
+
+```javascript
+async function test() {
+  const [err, resp] = await getData(5)
+    .then(resp => {
+      return [null, resp];
+    })
+    .catch(error => {
+      return [error];
+    });
+}
+```
+
+======================================
+
+**In**
+
+```javascript
+async function test() {
+  const [err, resp] = await getData;
+}
+
+function getData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(true);
+    }, 1000);
+  });
+}
+```
+
+**Out**
+
+```javascript
+async function test() {
+  const [err, resp] = await getData()
+    .then(resp => {
+      return [null, resp];
+    })
+    .catch(error => {
+      return [error];
+    });
+}
+
+function getData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(true);
+    }, 1000);
+  });
+}
+```
+
+======================================
+
+**In**
+
+```javascript
+async function test() {
+  const [err, resp] = await new Promise((resolve, reject) => {
+    resolve(true);
+  });
+}
+```
+
+**Out**
+
+```javascript
+async function test() {
+  const [err, resp] = await new Promise((resolve, reject) => {
+    resolve(true);
+  })
+    .then(resp => {
+      return [null, resp];
+    })
+    .catch(error => {
+      return [error];
+    });
+}
+```
+
+======================================
+
+**In**
+
+```javascript
+async function test() {
+  const [err, resp] = await Promise.resolve(true);
+}
+```
+
+**Out**
+
+```javascript
+async function test() {
+  const [err, resp] = await Promise.resolve(true)
+    .then(resp => {
+      return [null, resp];
+    })
+    .catch(error => {
+      return [error];
+    });
+}
+```
+
+======================================

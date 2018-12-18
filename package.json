@@ -14,7 +14,7 @@
     "contributors:generate": "all-contributors generate"
   },
   "dependencies": {
-    "babel-plugin-better-async-await": "^1.0.0"
+    "babel-plugin-better-async-await": "^1.1.0"
   },
   "devDependencies": {
     "all-contributors-cli": "^5.4.1"

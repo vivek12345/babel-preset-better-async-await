@@ -98,7 +98,7 @@ async function completeApplicationFlow() {
 }
 ```
 
-## 📒 Examples
+## 📒 Examples of using it in your code
 
 **Before**
 
@@ -182,5 +182,29 @@ async function test() {
   const [err, resp] = await fetch("http://some-rest-endpoint");
   if (err) handleError();
   // else do something with the response
+}
+```
+
+## 📒 Babel Tranformation
+
+**In**
+
+```javascript
+async function test() {
+  const [err, resp] = await fetch("http://some-rest-endpoint");
+}
+```
+
+**Out**
+
+```javascript
+async function test() {
+  const [err, resp] = await fetch("http://some-rest-endpoint")
+    .then(resp => {
+      return [null, resp];
+    })
+    .catch(error => {
+      return [error];
+    });
 }
 ```

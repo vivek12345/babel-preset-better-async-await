@@ -3,9 +3,20 @@
   "version": "1.0.0",
   "description": "preset for babel-plugin-better-async-await",
   "main": "index.js",
-  "author": "Vivek Nayyar",
+  "author": "Vivek Nayyar  <vivek.of.nayyar@gmail.com> (https://viveknayyar.in)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vivek12345/babel-preset-better-async-await/issues"
+  },
+  "homepage": "https://github.com/vivek12345/babel-preset-better-async-await#readme",
+  "scripts": {
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
+  },
   "dependencies": {
     "babel-plugin-better-async-await": "^1.0.0"
+  },
+  "devDependencies": {
+    "all-contributors-cli": "^5.4.1"
   }
 }
